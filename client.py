@@ -3,7 +3,7 @@ import service_pb2 as pb2
 import service_pb2_grpc as pb2_grpc
 
 def run_client():
-    channel = grpc.insecure_channel('localhost:50051')
+    channel = grpc.insecure_channel('ec2-18-157-185-42.eu-central-1.compute.amazonaws.com:50051')
     stub = pb2_grpc.FunctionServiceStub(channel)
 
     # Define the code and its arguments
