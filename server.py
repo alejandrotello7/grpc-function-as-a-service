@@ -11,19 +11,24 @@ class FunctionServiceServicer(pb2_grpc.FunctionServiceServicer):
         # Extract the code and arguments from the request
         code = request.code
         args = request.args
+        output_file = open("/app/server_output.log", "w")
 
         # Execute the code dynamically
         try:
             # Parse the code
             code_module = ast.parse(code)
             # Create a namespace for the code to execute in
-            code_namespace = {}
+            code_namespace = {"__builtins__": {}}
+            # Redirect stdout to the custom output file
+            code_namespace["__builtins__"]["print"] = lambda *args, **kwargs: print(*args, file=output_file, **kwargs)
             # Execute the code in the created namespace
             exec(compile(code_module, '<string>', 'exec'), code_namespace)
             # Call the function
             result = code_namespace['client_function'](*args)
         except Exception as e:
             result = str(e)
+
+        output_file.close()  # Close the custom output file
         return pb2.FunctionResponse(result=str(result))
 
 
