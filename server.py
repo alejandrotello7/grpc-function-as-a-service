@@ -11,7 +11,7 @@ class FunctionServiceServicer(pb2_grpc.FunctionServiceServicer):
         # Extract the code and arguments from the request
         code = request.code
         args = request.args
-        output_file = open("/app/server_output.log", "w")
+        output_file = open("/server_output.log", "w")
 
         # Execute the code dynamically
         try:
