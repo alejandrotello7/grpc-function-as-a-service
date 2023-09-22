@@ -8,7 +8,7 @@ WORKDIR /app
 ADD . /app
 
 RUN apt-get update && \
-    apt-get install -y perl socat iproute2 && \
+    apt-get install -y apt-utils perl socat iproute2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
