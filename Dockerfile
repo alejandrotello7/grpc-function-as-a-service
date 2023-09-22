@@ -21,6 +21,4 @@ EXPOSE 50051
 EXPOSE 5000
 
 RUN chmod +x enclave_script.sh
-
-# Run server.py when the container launches
 CMD ["./enclave_script.sh"]
