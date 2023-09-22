@@ -1,9 +1,15 @@
 #!/bin/bash
 
-# Define the container name to stop
-CONTAINER_NAME="my-grpc-server"
+# Define the Docker image name
+IMAGE_NAME="my-grpc-server"
 
-# Stop the Docker container with the specified name
-docker stop $CONTAINER_NAME
-docker rm $CONTAINER_NAME
-docker ps
+# Find and stop all containers based on the specified image name
+container_ids=$(docker ps -q --filter "ancestor=$IMAGE_NAME")
+
+if [ -z "$container_ids" ]; then
+  echo "No containers found based on image $IMAGE_NAME."
+else
+  echo "Stopping containers based on image $IMAGE_NAME..."
+  docker stop $container_ids
+  echo "Containers stopped."
+fi
