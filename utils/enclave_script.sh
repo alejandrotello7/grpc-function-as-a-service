@@ -9,4 +9,4 @@ DOCKER_PORT=50051
 socat vsock-listen:$HOST_PORT,reuseaddr,fork tcp-connect:127.0.0.1:$DOCKER_PORT &
 #socat tcp-listen:$HOST_PORT,reuseaddr,fork tcp-connect:127.0.0.1:$DOCKER_PORT &
 
-python server.py
+python3 server.py
