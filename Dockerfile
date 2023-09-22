@@ -13,7 +13,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY utils/enclave_script.sh .
-
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
