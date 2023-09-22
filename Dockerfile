@@ -17,8 +17,9 @@ COPY utils/enclave_script.sh .
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 
-# Make port 50051 available to the world outside this container
+# Make port 50051, 5000 available to the world outside this container
 EXPOSE 50051
+EXPOSE 5000
 
 RUN chmod +x enclave_script.sh
 
