@@ -8,9 +8,7 @@ WORKDIR /app
 ADD . /app
 
 RUN apt-get update && \
-    apt-get install -y apt-utils perl socat iproute2 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y apt-utils perl socat iproute2
 
 COPY utils/enclave_script.sh .
 # Install any needed packages specified in requirements.txt
